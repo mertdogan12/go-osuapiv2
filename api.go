@@ -154,7 +154,7 @@ func (api *Api) Request0(action string, url string) (resp *http.Response, err er
 	}
 
 	if resp.StatusCode == http.StatusUnauthorized {
-		fmt.Print("lul")
+		fmt.Print(token)
 		err = ErrorUnauthorized
 		return
 	}
