@@ -88,12 +88,14 @@ type tokenObj struct {
 func (api *Api) Token() (token string, err error) {
 	if time.Now().Before(api.expires) {
 		token = api.token
+		fmt.Println("1")
 		return
 	}
 
 	if api.isFetchingToken {
 		api.tokenLock.RLock()
 		token = api.token
+		fmt.Println("2")
 		api.tokenLock.RUnlock()
 		return
 	}
