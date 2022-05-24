@@ -68,6 +68,8 @@ func NewWithToken(token string) *Api {
 
 	lock := semaphore.NewWeighted(1000)
 
+	fmt.Println(token)
+
 	return &Api{
 		httpClient: client,
 		lock:       lock,
@@ -156,7 +158,7 @@ func (api *Api) Request0(action string, url string) (resp *http.Response, err er
 	}
 
 	if resp.StatusCode == http.StatusUnauthorized {
-		fmt.Print(token)
+		fmt.Println(token)
 		err = ErrorUnauthorized
 		return
 	}
