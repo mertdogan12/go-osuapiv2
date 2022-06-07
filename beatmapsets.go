@@ -8,9 +8,9 @@ import (
 	"os"
 )
 
-func (api *Api) SearchBeatmaps(rankStatus string) (beatmapSearch BeatmapSearch, err error) {
+func (api *Api) SearchBeatmaps(name string) (beatmapSearch BeatmapSearch, err error) {
 	values := url.Values{}
-	values.Set("s", rankStatus)
+	values.Set("q", name)
 	query := values.Encode()
 	url := "/beatmapsets/search?" + query
 	err = api.Request("GET", url, &beatmapSearch)
